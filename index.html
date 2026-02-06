@@ -279,20 +279,25 @@
                     body: JSON.stringify(formData)
                 });
 
-                if (response.ok) {
+                console.log('Response status:', response.status);
+                console.log('Response OK:', response.ok);
+
+                if (response.ok || response.status === 200 || response.status === 201) {
                     // Success
                     messageDiv.className = 'message success';
                     messageDiv.textContent = '✓ Thank you! Your information has been submitted successfully.';
                     messageDiv.style.display = 'block';
                     form.reset();
                 } else {
-                    throw new Error('Submission failed');
+                    const errorText = await response.text();
+                    console.error('Error response:', errorText);
+                    throw new Error(`Submission failed with status ${response.status}`);
                 }
             } catch (error) {
-                console.error('Error submitting form:', error);
                 // Error
+                console.error('Error submitting form:', error);
                 messageDiv.className = 'message error';
-                messageDiv.textContent = '✗ Oops! Something went wrong. Please try again.';
+                messageDiv.textContent = '✗ Oops! Something went wrong. Please try again. Error: ' + error.message;
                 messageDiv.style.display = 'block';
             } finally {
                 // Reset button
