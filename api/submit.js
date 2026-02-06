@@ -18,7 +18,7 @@ export default async function handler(req, res) {
 
     // Forward to n8n webhook
     const n8nResponse = await fetch(
-      'https://n8n.linguaflo.me/webhook-test/80dc94bc-078f-4a74-a529-fe33a489aeb8',
+      'https://n8n.linguaflo.me/webhook/80dc94bc-078f-4a74-a529-fe33a489aeb8',
       {
         method: 'POST',
         headers: {
