@@ -270,8 +270,8 @@
             messageDiv.style.display = 'none';
 
             try {
-                // Send to webhook
-                const response = await fetch('https://n8n.linguaflo.me/webhook-test/80dc94bc-078f-4a74-a529-fe33a489aeb8', {
+                // Send to your Vercel API endpoint (which will proxy to n8n)
+                const response = await fetch('/api/submit', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
@@ -297,7 +297,7 @@
                 // Error
                 console.error('Error submitting form:', error);
                 messageDiv.className = 'message error';
-                messageDiv.textContent = '✗ Oops! Something went wrong. Please try again. Error: ' + error.message;
+                messageDiv.textContent = '✗ Oops! Something went wrong. Please try again.';
                 messageDiv.style.display = 'block';
             } finally {
                 // Reset button
