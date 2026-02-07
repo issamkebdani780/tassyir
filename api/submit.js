@@ -18,7 +18,7 @@ export default async function handler(req, res) {
 
     // Forward to n8n webhook
     const n8nResponse = await fetch(
-      'https://tassyir.app.n8n.cloud/webhook-test/bd488373-c129-4b6f-a420-ca6bc7398876',
+      'https://tassyir.app.n8n.cloud/webhook/bd488373-c129-4b6f-a420-ca6bc7398876',
       {
         method: 'POST',
         headers: {
